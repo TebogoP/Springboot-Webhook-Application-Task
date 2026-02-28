@@ -1,5 +1,6 @@
 package com.tebogo.webhook.service;
 
+import com.tebogo.webhook.dto.SortReponseDTO;
 import com.tebogo.webhook.exception.InvalidInputException;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,9 @@ public class SortService {
         return Arrays.stream(word.split(""))
                 .sorted()
                 .toArray(String[]::new);
+    }
+
+    public SortReponseDTO getResponseDTO(String word){
+        return new SortReponseDTO(sortAlphabetically(word));
     }
 }
