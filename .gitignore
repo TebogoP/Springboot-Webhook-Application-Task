@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+###
+!**/src/test/java/com/tebogo/webhook/RestAssured/SortControllerBasicTest.java
+!**/src/test/java/com/tebogo/webhook/RestAssured/SortControllerTest.java
