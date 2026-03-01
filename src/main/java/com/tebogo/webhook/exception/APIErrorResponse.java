@@ -1,38 +1,34 @@
 package com.tebogo.webhook.exception;
 
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class APIErrorResponse {
-    private LocalDateTime timestamp;
-    private HttpStatusCode status;
-    private String error;
-    private String messge;
+    private final LocalDateTime timestamp;
+    private final int status;
+    private final String error;
+    private final String message;
 
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public HttpStatusCode getStatusCode() {
+    public int getStatus() {
         return status;
     }
 
-    public String getErrorName() {
+    public String getError() {
         return error;
     }
 
-    public String getErrMessge() {
-        return messge;
+    public String getMessage() {
+        return message;
     }
 
-    public APIErrorResponse(LocalDateTime timestamp, HttpStatusCode statusCode, String errorName, String errMessge) {
+    public APIErrorResponse(LocalDateTime timestamp, int statusCode, String error, String message) {
         this.timestamp = timestamp;
         this.status = statusCode;
-        this.error = errorName;
-        this.messge = errMessge;
+        this.error = error;
+        this.message = message;
     }
 
 }
