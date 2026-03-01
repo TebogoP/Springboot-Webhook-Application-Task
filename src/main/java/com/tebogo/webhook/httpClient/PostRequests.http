@@ -1,0 +1,13 @@
+POST http://localhost:8080/api/sort
+Content-Type: application/json
+
+{
+    "data": "example"
+}
+###
+POST http://localhost:8080/api/sort
+Content-Type: application/json
+
+{
+  "data":""
+}
