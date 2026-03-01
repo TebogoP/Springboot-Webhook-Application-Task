@@ -1,9 +1,9 @@
 package com.tebogo.webhook.dto;
 
-public class SortReponseDTO {
+public class SortResponseDTO {
     private String[] word;
 
-    public SortReponseDTO(String[] word) {
+    public SortResponseDTO(String[] word) {
         this.word = word;
     }
 

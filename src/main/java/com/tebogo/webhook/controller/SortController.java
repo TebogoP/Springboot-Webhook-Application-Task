@@ -1,6 +1,6 @@
 package com.tebogo.webhook.controller;
 
-import com.tebogo.webhook.dto.SortReponseDTO;
+import com.tebogo.webhook.dto.SortResponseDTO;
 import com.tebogo.webhook.dto.SortRequestDTO;
 import com.tebogo.webhook.service.SortService;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class SortController {
     }
 
     @PostMapping("/sort")
-    public SortReponseDTO sort(@RequestBody SortRequestDTO req){
+    public SortResponseDTO sort(@RequestBody SortRequestDTO req){
         return sortService.getResponseDTO(req.getData());
     }
 }
