@@ -17,6 +17,7 @@ public class SortController {
 
     @PostMapping("/sort")
     public SortResponseDTO sort(@RequestBody SortRequestDTO req){
-        return sortService.getResponseDTO(req.getData());
+    	 String[] sortedArray = sortService.sortAlphabetically(req.getData());
+    	 return new SortResponseDTO(sortedArray);
     }
 }
