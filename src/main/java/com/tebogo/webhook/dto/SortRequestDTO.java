@@ -1,7 +1,14 @@
 package com.tebogo.webhook.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Request payload containing the string to be sorted")
 public class SortRequestDTO {
 
+    @Schema(
+            description = "The string to sort alphabetically",
+            example = "dcba"
+    )
     private String data;
 
     public SortRequestDTO() {
