@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Tag(name = "Sorting API", description = "Operations related to sorting characters alphabetically")
+@Tag(name = "Sorting SpringBoot Webhook", description = "Operations related to sorting characters alphabetically")
 @RequestMapping("/api")
 public class SortController {
 
@@ -23,13 +23,14 @@ public class SortController {
     }
 
     @Operation(
-            summary = "Sort characters alphabetically",
-            description = "Accepts a string and returns its characters sorted in ascending alphabetical order.",
+            summary = "Sort characters alphabetically from a valid input",
+            description = "Accepts a string and returns its characters sorted in ascending alphabetical order in an array.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Successfully sorted characters",
                             content = @Content(
+                                    mediaType = "application/json",
                                     schema = @Schema(implementation = SortResponseDTO.class),
                                     examples = @ExampleObject(
                                             value = """
@@ -44,6 +45,7 @@ public class SortController {
                             responseCode = "400",
                             description = "Invalid input",
                             content = @Content(
+                                    mediaType = "application/json",
                                     schema = @Schema(implementation = SortResponseDTO.class),
                                     examples = @ExampleObject(
                                             value = """
@@ -56,10 +58,20 @@ public class SortController {
                                                     """
                                     )
                             )
-                    )
+                    )//,
+//                    @ApiResponse(
+//                            responseCode = "415",
+//                            description = "Unsupported Media Type - Only application/json is supported"
+//                    ),
+//                    @ApiResponse(
+//                            responseCode = "500",
+//                            description = "Internal Server Error"
+//                    )
             }
     )
-    @PostMapping("/sort")
+    @PostMapping(value = "/sort",
+            consumes = "application/json",
+            produces = "application/json")
     public SortResponseDTO sort(@RequestBody SortRequestDTO req){
     	 String[] sortedArray = sortService.sortAlphabetically(req.getData());
     	 return new SortResponseDTO(sortedArray);
