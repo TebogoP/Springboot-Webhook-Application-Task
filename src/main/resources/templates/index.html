@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>API Validator</title>
+<!--    <link rel="stylesheet" th:href="@{/styles/css/style.css}"/>-->
+</head>
+<body>
+
+<h1>API Validation Tester</h1>
+
+<form th:action="@{/}" th:object="${validationForm}" method="post">
+
+    <div>
+        <label>Email</label>
+        <input type="email" th:field="*{email}" placeholder="Enter your email" required>
+    </div>
+
+    <div>
+        <label>API Endpoint URL</label>
+        <input type="text" th:field="*{endpoint}" placeholder="Enter API endpoint" required>
+    </div>
+
+    <div>
+        <button type="submit">Validate</button>
+    </div>
+
+</form>
+
+<hr>
+
+<div th:if="${response}">
+    <h3>Validation Response:</h3>
+    <pre th:text="${response}"></pre>
+</div>
+
+</body>
+</html>
