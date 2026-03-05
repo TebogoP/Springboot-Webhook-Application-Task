@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>API Validator</title>
-<!--    <link rel="stylesheet" th:href="@{/styles/css/style.css}"/>-->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
+<div class="container mt-5">
 <h1>API Validation Tester</h1>
 
-<form th:action="@{/}" th:object="${validationForm}" method="post">
+<form th:action="@{/form}" th:object="${validationForm}" method="post">
 
-    <div>
+    <div class="mb-3">
         <label>Email</label>
         <input type="email" th:field="*{email}" placeholder="Enter your email" required>
     </div>
 
-    <div>
+    <div class="mb-3">
         <label>API Endpoint URL</label>
         <input type="text" th:field="*{endpoint}" placeholder="Enter API endpoint" required>
     </div>
@@ -27,12 +29,13 @@
 
 </form>
 
-<hr>
-
 <div th:if="${response}">
+    <hr>
     <h3>Validation Response:</h3>
-    <pre th:text="${response}"></pre>
+    <pre class="bg-dark text-light p-3 text-start"
+         th:text="${response}">
+    </pre>
 </div>
-
+</div>
 </body>
 </html>

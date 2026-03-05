@@ -15,13 +15,13 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class ValidationFormController {
 
-    @GetMapping("/")
+    @GetMapping("/form")
     public String showForm(Model model) {
         model.addAttribute("validationForm", new ValidationFormDTO());
         return "index";
     }
 
-    @PostMapping("/")
+    @PostMapping("/form")
     public String submitForm(
             @ModelAttribute("validationForm") ValidationFormDTO form,
             Model model) {
