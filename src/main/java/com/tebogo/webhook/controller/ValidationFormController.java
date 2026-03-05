@@ -1,5 +1,6 @@
 package com.tebogo.webhook.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tebogo.webhook.dto.ValidationFormDTO;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -41,11 +42,11 @@ public class ValidationFormController {
                     String.class
             );
 
-            model.addAttribute("response", response.getBody());
+            model.addAttribute("response", formatJson(response.getBody()));
 
         } catch (HttpStatusCodeException ex) {
 
-            model.addAttribute("response", ex.getResponseBodyAsString());
+            model.addAttribute("response", formatJson(ex.getResponseBodyAsString()));
 
         } catch (RestClientException ex) {
 
@@ -53,5 +54,15 @@ public class ValidationFormController {
         }
 
         return "index";
+    }
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private String formatJson(String json) {
+        try {
+            Object jsonObject = objectMapper.readValue(json, Object.class);
+            return objectMapper.writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(jsonObject);
+        } catch (Exception e) {
+            return json;
+        }
     }
 }
